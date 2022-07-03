@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@model IEnumerable<vroom2.Models.DonHang> 
+<!DOCTYPE html>
+
+
+    <h2 style="text-align:center;margin-top:70px">Danh sách đơn hàng</h2>
+<style>
+.container_swap{
+width: 1200px;
+margin:auto;/* căn giữa*/
+margin-top: 50px;
+}
+
+.div_con2{
+width: 600px;
+
+float: left;
+
+text-align: center;
+}
+
+</style>
+
+
+<div class="container_swap">
+    <div class="div_con2">
+       
+      
+       
+    </div>
+   
+    
+</div>
+<!--Bảng -->
+<i class="ti-pencil-alt"></i>
+<!--chỉnh boder none-->
+<table style="border-collapse:collapse;width:1000px; margin:auto; border:none; border-spacing:0px;background-color: #B0E0E6">
+    <thead >
+       <tr>          <!--chuyển thông tin về sản phẩm lên đây thì không cần dùng IDmodel-->
+                     <th style="border:none;padding:10px;text-align: center;">IDUser</th>
+                     <th style="border:none;padding:10px;text-align: center;">Số điện thoại</th>
+                     <th style="border:none;padding:10px;text-align: center;">Họ và tên</th>
+                     <th style="border:none;padding:10px;text-align: center;">Ngày xem xe</th>
+                     <th style="border:none;padding:10px;text-align: center;">Tên sản phẩm</th>
+                     <th style="border:none;padding:10px;text-align: center;">Giá</th>
+                     <th style="border:none;padding:10px;text-align: center;">Tình trạng</th>
+                     <th style="border:none;padding:10px;text-align: center;"></th>
+       </tr>
+    </thead>
+    <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*hiển thị *@
+                      @*  tên hãng *@
+                       
+                          @*  tên sản phẩm cụ thể  *@ 
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.IDUser)</td>
+                          @*  hiển thị hình ảnh; nhét chuỗi ký tự vào thẻ ảnh  *@ 
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.SDT)</td>
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.HoTen)</td>
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.NgayXemXe)</td>
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.Name)</td>
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.Price)</td>
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.TinhTrang)</td>
+                        
+                        @*cách edit chính xác bằng ID , bootstrap nữa*@
+
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">
+
+                             <div class="btn-group" role="group">     <!--Cho chung hàng-->
+                                 <!--đường dẫn-->
+                                       <a type="submit"class="btn btn-primary"asp-action="HoanThanhDonHang"asp-route-id="@item.ID">Done</a>
+                                  
+                                     
+                                    
+                                        @*Them hieu ung*@
+                                       <form method="post"action="DeleteDonHang">
+                                           @* truyền bằng form thêm quả thẻ ẩn này cho hợp logic khong dùng route id *@
+                                           <input hidden name="Id"type="text" value="@item.ID"/>
+                                           <input onclick="if(!confirm('Are you sure you want to delete this order')){return false}" type="submit"class="btn btn-danger"asp-action="DeleteDonHang" value="Delete"/>
+                                       </form>
+                                
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+
+            }
+        </tbody>
+ </table>

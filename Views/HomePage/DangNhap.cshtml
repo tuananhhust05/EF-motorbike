@@ -1,0 +1,94 @@
+﻿@{
+   
+    Layout = null;
+}
+<h1 style="text-align:center;margin-top:50px;">Đăng Nhập</h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<body>
+<style>
+#tendangnhap{
+    text-align: center;
+    margin-left: 450px;
+}
+.form-group{
+   
+    
+    margin-top:10px;
+
+}
+.btn btn-default{
+    color: aqua;
+}
+.formlogin{
+    margin-top:100px;
+    margin-left:600px;}
+.abc{
+margin-top:200px;
+margin-left:450px;
+}
+.giua{
+color:black;
+margin-left:20px}
+.abc1{
+    width: 400px;
+    height:30px;
+}
+.btnlogin{
+    margin-left:100px;  /* căn lề cho button trong form*/
+    background-color:red;/* màu button*/
+    width:200px;   /* kích thươc*/
+    height:50px;
+    text-align: center; /* căn lề cho chữ */
+    border-radius: 4px;   /* điều chỉnh góc tròn*/
+    color:white;  /*màu chữ*/
+    border-color:red;  /* viền */
+}
+
+
+</style>
+<!--css thằng form chứa nó -->
+
+
+
+    
+       <!--tạo form chuyền thông tin => đơn giản hiệu quả --> 
+   <form class="formlogin" asp-action="DangNhap",asp-controller="HomePage",method="post">
+    <div class="form-group">
+       <input class="abc1"placeholder="Nhập Tên đăng nhập" type="text" id="IP" name="IP" />
+    </div>
+    <div class="form-group">
+      <input class="abc1"placeholder="Nhập mật khẩu"type="text" id="pw" name="pw" />
+    </div>
+    <div class="form-group">
+       <input type="submit"class="btnlogin" value="Đăng Nhập"  />
+    </div>
+    
+
+    </form>
+     <button style="text-align:center;margin-top:25px;margin-left:700px;background-color:red;width:200px;height:50px;color:white;border-radius: 4px;">  
+         <a asp-action="DangKy"asp-controller="HomePage" style="text-decoration: none;color:white;text-align:center">Đăng ký</a>
+     </button>
+
+    
+   
+    
+   
+
+
+
+
+
+<!--Chân trang */-->
+
+
+
+
+</body>
+
+</html>

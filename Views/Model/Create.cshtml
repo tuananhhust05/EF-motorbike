@@ -1,0 +1,34 @@
+﻿@model vroom2.Models.ModelViewModel
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<h2 style="text-align:center;">Add Model of Vehicle</h2>
+
+<form method="post" asp-action="CreatePost",asp-controller="Model"style="margin-top:50px">
+<div class ="form-group row">
+    <div class="col-4">
+       
+       @* makeID thuộc tính của thằng Model con trong viewModel*@
+       <select asp-for="Model.MakeID" asp-items="Model.CSelectListItem(Model.Makes)" class="form-control"></select>
+   </div>
+</div>
+<div class ="form-group row">
+   <div class="col-4">
+      @* nhập dữ liệu cho thuộc tính Name của thằng Model *@
+       <input asp-for="Model.Name" class="form-control"placeholder="Tên sản phẩm"/>
+      @*Kích thức lưu lượng của form*@
+      <input asp-for="Model.ImageUrl " class="form-control"placeholder="Nhập link ảnh"size="10000000000"maxlength="1000000000000000"/>
+      <input asp-for="Model.Price " class="form-control"placeholder="Giá sản phẩm: VND"/>
+   </div>
+</div>
+
+<div class ="form-group row">
+    <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Create"/>
+    
+    </div>
+</div>
+</form>
+<a asp-action="Index"class="btn btn-success">Back</a>

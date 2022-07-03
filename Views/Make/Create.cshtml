@@ -1,0 +1,20 @@
+﻿@model IEnumerable<vroom2.Models.Make> 
+<!DOCTYPE html>
+<h2 style="text-align:center;">Add Make of Vehicle</h2>
+
+<form method="post" asp-action="Create",asp-controller="Make"style="margin-top:50px">
+<div class ="form-group row">
+    
+   <div class="col-4">
+       <input placeholder="Nhập Tên"name="Name"id="Name" class="form-control"/>
+   </div>
+ 
+    <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Create"/>
+    
+    </div>
+</div>
+</form>
+<a asp-action="Index"class="btn btn-success">Back</a>
+
+

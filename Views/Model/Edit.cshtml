@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@model vroom2.Models.ModelViewModel 
+<!DOCTYPE html>
+<h2 style="text-align:center;">Edit Model of Vehicle</h2>
+
+<form method="post" asp-action="EditPost",asp-controller="Model"style="margin-top:50px">
+
+    @*mặc định gán giá trị cho trường ẩn *@
+    @*ẩn input này *@
+    <input hidden asp-for="Model.Id" value="@Model.Model.Id"/>
+
+
+
+<div class ="form-group row">
+    <div class="col-4">
+       
+       @* makeID thuộc tính của thằng Model con trong viewModel*@
+      @* hiển thị tên thằng make did kèm với Model, chú ý model cũng gồm make *@
+     @*Chọn được make suy ra được makeID cho model vì danh sách model được show fix theo id *@
+       <select asp-for="Model.MakeID" asp-items="Model.CSelectListItem(Model.Makes)" class="form-control">@Model.Model.Make.Name</select>
+   </div>
+</div>
+<div class ="form-group row">
+
+   <div class="col-4">
+      @* nhập dữ liệu cho thuộc tính Name của thằng Model *@
+      <input asp-for="Model.Name" class="form-control"value="@Model.Model.Name" required/>
+   </div>
+   <div class="col-4">
+      @* nhập dữ liệu cho thuộc tính Name của thằng Model *@
+      <input asp-for="Model.ImageUrl" class="form-control"value="@Model.Model.ImageUrl" required/>  <!--truyền vào là 1 ViewModel nên phải 2 lớp-->
+   </div>
+   <div class="col-4">
+      @* nhập dữ liệu cho thuộc tính Name của thằng Model *@
+      <input asp-for="Model.Price" class="form-control"value="@Model.Model.Price" required/>  <!--truyền vào là 1 ViewModel nên phải 2 lớp-->
+   </div>
+</div>
+
+<div class ="form-group row">
+    <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Update"/>
+    
+    </div>
+</div>
+</form>
+<a asp-action="Index"class="btn btn-success">Back</a>

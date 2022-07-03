@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model vroom2.Models.Make 
+<h2 style="text-align:center">Chỉnh sửa thông tin</h2>
+<form method="post" asp-action="Edit",asp-controller="Make">
+<div class ="form-group row">
+    
+   <div class="col-4">
+       @*Điền thuộc tính Name cho Models *@
+       <input asp-for="Name"type="text"name="Name" value="@Model.Name" required />  @*required bắt buộc để hiển thị*@ 
+   </div>
+      
+    <div class="form-group">
+       
+    <input type="submit" class="btn btn-primary" value="Update"/>
+    <a asp-action="Index"class="btn btn-success">Back</a>
+    </div>
+</div>
+</form>

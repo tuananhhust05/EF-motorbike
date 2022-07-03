@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+@model IEnumerable<vroom2.Models.DonHang> 
+<!DOCTYPE html>
+
+
+    <h2 style="text-align:center;margin-top:70px">Giỏ hàng</h2>
+<style>
+.container_swap{
+width: 1200px;
+margin:auto;/* căn giữa*/
+margin-top: 50px;
+}
+
+.div_con2{
+width: 600px;
+
+float: left;
+
+text-align: center;
+}
+
+</style>
+
+
+<div class="container_swap">
+    <div class="div_con2">
+       
+      
+       
+    </div>
+   
+    
+</div>
+<!--Bảng -->
+<i class="ti-pencil-alt"></i>
+<!--chỉnh boder none-->
+<table style="border-collapse:collapse;width:1000px; margin:auto; border:none; border-spacing:0px;background-color: #B0E0E6">
+    <thead >
+       <tr>
+                    
+                     <th style="border:none;padding:10px;text-align: center;">Tên sản phẩm</th>
+                     <th style="border:none;padding:10px;text-align: center;">Hình ảnh</th>
+                     <th style="border:none;padding:10px;text-align: center;">Giá</th>
+                     <th style="border:none;padding:10px;text-align: center;">Tình trạng</th>
+                     <th style="border:none;padding:10px;text-align: center;"></th>
+       </tr>
+    </thead>
+    <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*hiển thị *@
+                      @*  tên hãng *@
+                       
+                          @*  tên sản phẩm cụ thể  *@ 
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.Name)</td>
+                          @*  hiển thị hình ảnh; nhét chuỗi ký tự vào thẻ ảnh  *@ 
+                        <td style="border:none; text-align: center;padding:10px;background-color: white"><img style="width:300px;height:150px" src="@item.ImageUrl" alt=""/></td>
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.Price)</td>
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">@Html.DisplayFor(m=>item.TinhTrang)</td>
+                        
+                        @*cách edit chính xác bằng ID , bootstrap nữa*@
+
+                        <td style="border:none; text-align: center;padding:10px;background-color: white">
+
+                             <div class="btn-group" role="group">     <!--Cho chung hàng-->
+                                 <!--đường dẫn-->
+                                       <a type="submit"class="btn btn-primary"asp-action="EditDonHang"asp-route-id="@item.ID">Edit</a>
+                                  
+                                     
+                                    
+                                       
+                                
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+
+            }
+        </tbody>
+ </table>

@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+@model vroom2.Models.DonHang
+
+
+<h2 style="text-align:center;margin-top:70px">Chỉnh sửa thông tin Đơn hàng</h2>
+
+
+<!--Tiện hơn cách truyền thống trả về đối tượng luôn -->
+<form style="margin-top:40px" method="post" asp-action="EditDonHang",asp-controller="User">
+<div class ="form-group row">
+    
+   <div class="col-4">
+       @*Điền thuộc tính Name cho Models *@
+       <input  asp-for="HoTen"type="text"name="Name" value="@Model.HoTen" required />  @*required bắt buộc để hiển thị*@ 
+       <input  asp-for="SDT"type="text"name="Name" value="@Model.SDT" required /> 
+       <input  asp-for="NgayXemXe"type="text"name="Name" value="@Model.NgayXemXe" required /> 
+
+       <!--để giá trị được giữ nguyên-->
+       <input hidden asp-for="IDModels" value="@Model.IDModels" required />  @*required bắt buộc để hiển thị*@ 
+       <input hidden asp-for="ImageUrl"value="@Model.ImageUrl" required /> 
+       <input hidden asp-for="Name" value="@Model.Name" required /> 
+       <input hidden asp-for="Price" value="@Model.Price" required />  @*required bắt buộc để hiển thị*@ 
+       <input hidden asp-for="IDUser" value="@Model.IDUser" required /> 
+       <input hidden asp-for="TinhTrang" value="@Model.TinhTrang" required /> 
+       <!--Thẻ ẩn -->
+       <input hidden asp-for="ID" value="@Model.ID"/>
+   </div>
+      
+
+
+
+    <div class="form-group">
+       
+    <input type="submit" class="btn btn-primary" value="Update"/>
+    <a asp-action="GioHang"class="btn btn-success">Back</a>
+    </div>
+</div>
+</form>
